@@ -25,14 +25,15 @@ namespace TodoList.Controllers
 
         public async Task<IActionResult> MyCalendar()
         {
-            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewData["Events"] = JSONListHelper.GetEventListJSONString(await _context.Todos.ToListAsync());
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewData["Events"] = JSONListHelper.GetEventListJSONString(await _context.Todos.Where(n => n.User.Id == userId).ToListAsync());
             return View();
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Todos.OrderByDescending(n => n.StartTime).ToListAsync());
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return View(await _context.Todos.Where(n => n.User.Id == userId).OrderByDescending(n => n.StartTime).ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -63,6 +64,8 @@ namespace TodoList.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                todo.User = _context.Users.FirstOrDefault(x => x.Id == userId.ToString());
                 _context.Add(todo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -98,6 +101,8 @@ namespace TodoList.Controllers
             {
                 try
                 {
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    todo.User = _context.Users.FirstOrDefault(x => x.Id == userId.ToString());
                     _context.Update(todo);
                     await _context.SaveChangesAsync();
                 }

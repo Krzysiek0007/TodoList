@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#nullable disable
+using System.ComponentModel.DataAnnotations;
 
 namespace TodoList.Models
 {
@@ -6,7 +7,10 @@ namespace TodoList.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
         public string Description { get; set; }
 
         [Display(Name = "Start time")]
@@ -15,6 +19,6 @@ namespace TodoList.Models
         [Display(Name = "End time")]
         public DateTime EndTime { get; set; }
 
-        //public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

@@ -39,7 +39,11 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a> | <a asp-action="MyCalendar">Back to My Calendar</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <br />
+        <div style="display: flex; justify-content: flex-end;">
+            <a class="btn btn-secondary btn-sm" style="margin-left: 10px" asp-action="MyCalendar">Back to My Calendar</a>
+            <a class="btn btn-secondary btn-sm" style="margin-left: 10px" asp-action="Index">Back to List</a>
+        </div>
     </form>
 </div>

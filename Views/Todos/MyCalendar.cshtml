@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "My Calendar";
-    string prodID = "20";
 }
 
 <style>
@@ -100,10 +99,6 @@
                     });
                 </script>
 
-                @* <a type="button" id="eventId" class="btn btn-primary" asp-controller="Todos" asp-action="Edit" asp-route-id=@prodID>Edit</a> *@
-                @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | *@
-                @* <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
-                @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
