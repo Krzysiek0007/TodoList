@@ -1,5 +1,3 @@
-![](./media/solutions-microsoft-logo-small.png)
-
 # Aplikacja "Todo List"
 Aplikacja umożliwia użytkownikowi planowanie zadań.
 
