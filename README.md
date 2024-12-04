@@ -14,6 +14,13 @@ Aplikacja umożliwia użytkownikowi planowanie zadań.
     - po kliknięciu powiadomienia przechodzi się do okna szczegółów zadania,
     - gdy kursor myszy znajdzie się na powiadomieniu, to nie zniknie ono od razu,
     - w kalendarzu po kliknięciu zadania wyświetla się okno szczegółów.
+    
+## Ścieżka testowania aplikacji
+
+- zarejestrować nowego użytkownika
+- zalogować się za pomocą utworzonego konta
+- utworzyć zadanie, którego czas startu będzie krótszy niż 30 minut od obecnej chwili (aby zobaczyć powiadomienia)
+- trzorzyć nowe zadania, edytować lub usuwać.
 
 ## Adres strony
 https://todolist.hostingasp.pl/
