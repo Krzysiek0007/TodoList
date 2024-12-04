@@ -6,9 +6,10 @@
     <title>@ViewData["Title"] - Todo List</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TodoList.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
@@ -30,9 +31,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Todos" asp-action="MyCalendar">My Calendar</a>
                         </li>
-                        @* <li class="nav-item"> *@
-                        @*     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
-                        @* </li> *@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -54,6 +52,10 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/index.global.min.js" asp-append-version="true"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/notification.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

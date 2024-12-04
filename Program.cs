@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
 using TodoList.Models;
+using TodoList.Services;
 
 namespace TodoList
 {
@@ -40,8 +41,12 @@ namespace TodoList
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
             });
-
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSignalR();
+            builder.Services.AddScoped<ApplicationDbContext>();
+            builder.Services.AddSingleton<IUserContext, UserContext>();
+            builder.Services.AddHostedService<Services.TaskScheduler>();
 
             var app = builder.Build();
 
@@ -59,7 +64,6 @@ namespace TodoList
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -70,6 +74,7 @@ namespace TodoList
                 .WithStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();
+            app.MapHub<NotificationHub>("/notificationHub");
 
             app.Run();
         }

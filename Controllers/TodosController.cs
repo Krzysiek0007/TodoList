@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
 using TodoList.Helpers;
 using TodoList.Models;
+using TodoList.Services;
 
 namespace TodoList.Controllers
 {
@@ -17,15 +18,19 @@ namespace TodoList.Controllers
     public class TodosController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IUserContext _userContext;
 
-        public TodosController(ApplicationDbContext context)
+        public TodosController(ApplicationDbContext context, IUserContext userContext)
         {
             _context = context;
+            _userContext = userContext;
         }
 
         public async Task<IActionResult> MyCalendar()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _userContext.UserId = userId;
+            
             ViewData["Events"] = JSONListHelper.GetEventListJSONString(await _context.Todos.Where(n => n.User.Id == userId).ToListAsync());
             return View();
         }
@@ -33,6 +38,8 @@ namespace TodoList.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _userContext.UserId = userId;
+
             return View(await _context.Todos.Where(n => n.User.Id == userId).OrderByDescending(n => n.StartTime).ToListAsync());
         }
 

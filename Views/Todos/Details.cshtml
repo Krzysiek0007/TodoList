@@ -37,6 +37,11 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+    <br />
+    <div style="display: flex; justify-content: flex-end;">
+        <a class="btn btn-secondary btn-sm" style="margin-left: 10px" asp-action="MyCalendar">Back to My Calendar</a>
+        <a class="btn btn-secondary btn-sm" style="margin-left: 10px" asp-action="Index">Back to List</a>
+    </div>
 </div>
