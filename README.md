@@ -20,6 +20,7 @@ Aplikacja umożliwia użytkownikowi planowanie zadań.
 - zarejestrować nowego użytkownika
 - zalogować się za pomocą utworzonego konta
 - tworzyć nowe zadania, edytować lub usuwać
+- przeglądać zadania za pomocą kalendarza (jest tam widok do wyświetlania zadań dla określonego dnia)
 
     UWAGA: dla zadań, których czas startu będzie krótszy niż 30 minut od obecnej chwili będą wyświetlały się powiadomienia
 
