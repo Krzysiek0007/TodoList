@@ -18,7 +18,7 @@ Aplikacja umożliwia użytkownikowi planowanie zadań.
     - w kalendarzu po kliknięciu zadania wyświetla się okno szczegółów.
 
 ## Adres strony
-http://
+https://todolist.hostingasp.pl/
 
 ## Kod źródłowy
 https://github.com/Krzysiek0007/TodoList.git
