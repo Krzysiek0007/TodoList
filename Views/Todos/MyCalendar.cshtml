@@ -2,21 +2,6 @@
     ViewData["Title"] = "My Calendar";
 }
 
-<style>
-    .popper,
-    .tooltip {
-        position: absolute;
-        z-index: 9999;
-        background: #FFC107;
-        color: black;
-        width: 150px;
-        border-radius: 3px;
-        box-shadow: 0 0 2px rgba(0,0,0,0.5);
-        padding: 10px;
-        text-align: center;
-    }
-</style>
-
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -24,8 +9,16 @@
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         events: @Html.Raw(ViewData["Events"]),
+        customButtons: {
+          addTaskButton: {
+            text: 'Add Task',
+            click: function() {
+              window.location.href = '/Todos/Create';
+            }
+          }
+        },
         headerToolbar: {
-            left: 'today prev,next',
+            left: 'addTaskButton today prev,next',
             center: 'title',
             right: 'timeGridWeek,dayGridMonth listDay'
         },
